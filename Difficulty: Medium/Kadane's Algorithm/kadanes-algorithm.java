@@ -43,11 +43,10 @@ class Solution {
         int sum =0;
         int maxStore = Integer.MIN_VALUE;
         for(int i=0; i<arr.length; i++){
+            if(sum<0) sum=0;
             sum += arr[i];
             maxStore = Math.max(maxStore, sum);
-            if(sum<0) sum=0;
         }
-        // if(maxStore==0) return arr[0];
         return maxStore;
     }
 }
