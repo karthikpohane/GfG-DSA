@@ -64,38 +64,33 @@ class GfG {
 
 class Solution {
     public static Node findUnion(Node head1, Node head2) {
-        Node temp1 = head1;
-        Node temp2 = head2;
-        HashSet<Integer> hash = new HashSet<>();
+        // Add your code here.
+        TreeSet<Integer> sortedSet = new TreeSet<>();
+        Node a = head1;
+        Node b = head2;
         
-        while(temp1 != null){
-            hash.add(temp1.data);
-            temp1 = temp1.next;
+        while(a!=null){
+            sortedSet.add(a.data);
+            a = a.next;
         }
-        
-        while(temp2 != null){
-            hash.add(temp2.data);
-            temp2 = temp2.next;
+        while(b!=null){
+            sortedSet.add(b.data);
+            b = b.next;
         }
-        
-        //Sort the hashSet
-        ArrayList<Integer> sortedList = new ArrayList<>(hash);
-        Collections.sort(sortedList);
         
         Node result = null;
         Node tail = null;
         
-        for(int data: sortedList){
+        for(int data: sortedSet){
             Node newNode = new Node(data);
-            if (result == null) {
-                    result = newNode;
-                    tail = result;
-                } else {
-                    tail.next = newNode;
-                    tail = newNode;
-                }
+            if(result==null){
+                result = newNode;
+                tail = result;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
+            }
         }
-        
         return result;
     }
 }
